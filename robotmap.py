@@ -15,7 +15,7 @@ class RobotMap():
     claw_cfg = { # type Claw
         'rear_pwm': 0,
         'front_pwm': 1,
-        'pcm_id': pcm_arm_id,
+        'ram_pcm_id': pcm_arm_id,
         'ram_fwd_pcm': 2,
         'ram_bwd_pcm': 3,
     }
