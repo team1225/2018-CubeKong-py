@@ -4,9 +4,9 @@
 class RobotMap():
     pass
 
-    drive = {
-        'left_can_talon': 10,
-        'right_can_talon': 11,
+    drive_cfg = {
+        'left_can': 10,
+        'right_can': 11,
     }
 
     pcm_arm_id = 5

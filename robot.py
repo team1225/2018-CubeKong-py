@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import wpilib
+from wpilib import drive
+import ctre
 from magicbot import MagicRobot
 
 from robotmap import RobotMap
@@ -15,6 +17,10 @@ class MyRobot(MagicRobot):
     
     def createObjects(self):
         # Initialize all wpilib HW
+
+        self.right_drive = ctre.WPI_TalonSRX(RobotMap.drive_cfg['left_can'])
+        self.left_drive = ctre.WPI_TalonSRX(RobotMap.drive_cfg['right_can'])
+        self.drive = wpilib.drive.DifferentialDrive(self.right_drive, self.left_drive)
 
         self.arm_lifter = wpilib.DoubleSolenoid(
                 RobotMap.arm_cfg['pcm_id'],
@@ -51,6 +57,14 @@ class MyRobot(MagicRobot):
 
     def teleopPeriodic(self):
         # Operator Control, runs repeatedly while teleop-enabled
+
+        try:
+            self.drive.arcadeDrive(
+                    self.joystick.getY(wpilib.interfaces.GenericHID.Hand.kLeft), # Drive fwd/bwd
+                    self.joystick.getX(wpilib.interfaces.GenericHID.Hand.kRight), # Turn left/right
+            )
+        except:
+            self.onException()
         
         try:
             if self.joystick.getYButtonPressed():
