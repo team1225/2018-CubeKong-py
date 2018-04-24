@@ -11,6 +11,7 @@ from components.claw import Claw
 
 
 class MyRobot(MagicRobot):
+    drive: wpilib.drive.DifferentialDrive
     arm: Lifter
     body: Lifter
     claw: Claw
