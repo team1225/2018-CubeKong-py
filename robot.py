@@ -88,6 +88,8 @@ class MyRobot(MagicRobot):
                 self.claw.set_state(Claw.states['medium'])
             elif self.joystick.getTriggerAxis(wpilib.interfaces.GenericHID.Hand.kLeft) >= 0.25:
                 self.claw.set_state(Claw.states['slow'])
+            else:
+                self.claw.set_state(Claw.states['hold'])
         except:
             self.onException()
 
