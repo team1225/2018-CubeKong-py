@@ -15,7 +15,7 @@ class MyRobot(MagicRobot):
     arm: Lifter
     body: Lifter
     claw: Claw
-    
+
     def createObjects(self):
         # Initialize all wpilib HW
 
@@ -61,7 +61,7 @@ class MyRobot(MagicRobot):
 
         try:
             self.drive.arcadeDrive(
-                    self.joystick.getY(wpilib.interfaces.GenericHID.Hand.kLeft), # Drive fwd/bwd
+                    -self.joystick.getY(wpilib.interfaces.GenericHID.Hand.kLeft), # Drive fwd/bwd
                     self.joystick.getX(wpilib.interfaces.GenericHID.Hand.kRight), # Turn left/right
             )
         except:
@@ -74,17 +74,17 @@ class MyRobot(MagicRobot):
             self.onException()
 
         try:
-            if self.joystick.getStartButtonPressed():
+            if self.joystick.getBackButtonPressed():
                 self.body.toggle_position()
         except:
             self.onException()
 
         try:
-            if self.joystick.getBumperPressed(wpilib.interfaces.GenericHID.Hand.kRight):
+            if self.joystick.getBumper(wpilib.interfaces.GenericHID.Hand.kRight):
                 self.claw.set_state(Claw.states['pull'])
-            elif self.joystick.getXButtonPressed():
+            elif self.joystick.getXButton():
                 self.claw.set_state(Claw.states['fast'])
-            elif self.joystick.getBumperPressed(wpilib.interfaces.GenericHID.Hand.kLeft):
+            elif self.joystick.getBumper(wpilib.interfaces.GenericHID.Hand.kLeft):
                 self.claw.set_state(Claw.states['medium'])
             elif self.joystick.getTriggerAxis(wpilib.interfaces.GenericHID.Hand.kLeft) >= 0.25:
                 self.claw.set_state(Claw.states['slow'])
