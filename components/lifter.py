@@ -28,6 +28,6 @@ class Lifter:
     def execute(self):
         # Executes during robot runtime
         if self.position:
-            self.lifter.set(wpilib.DoubleSolenoid.Value.kForward)
-        else:
             self.lifter.set(wpilib.DoubleSolenoid.Value.kReverse)
+        else:
+            self.lifter.set(wpilib.DoubleSolenoid.Value.kForward)

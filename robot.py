@@ -43,7 +43,9 @@ class MyRobot(MagicRobot):
                 RobotMap.claw_cfg['ram_bwd_pcm'],
         )
         self.claw_rear_motors = wpilib.Spark(RobotMap.claw_cfg['rear_pwm'])
+        self.claw_rear_motors.setInverted(True)
         self.claw_front_motors = wpilib.Talon(RobotMap.claw_cfg['front_pwm'])
+        self.claw_front_motors.setInverted(True)
 
         self.joystick = wpilib.XboxController(0)
     
