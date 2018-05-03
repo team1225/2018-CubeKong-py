@@ -8,7 +8,7 @@ class Claw:
     
     states = {
         # 'state': (motor speed, ram position)
-        'pull': (0.75, False),
+        'pull': (-0.75, False),
         'hold': (-0.20, False),
         'slow': (0.50, False),
         'medium': (0.85, False),
