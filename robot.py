@@ -21,6 +21,8 @@ class MyRobot(MagicRobot):
 
         self.right_drive = ctre.WPI_TalonSRX(RobotMap.drive_cfg['left_can'])
         self.left_drive = ctre.WPI_TalonSRX(RobotMap.drive_cfg['right_can'])
+        self.right_drive.setInverted(RobotMap.drive_cfg['right_invert'])
+        self.left_drive.setInverted(RobotMap.drive_cfg['left_invert'])
         self.drive = wpilib.drive.DifferentialDrive(self.right_drive, self.left_drive)
 
         self.arm_lifter = wpilib.DoubleSolenoid(
@@ -43,9 +45,9 @@ class MyRobot(MagicRobot):
                 RobotMap.claw_cfg['ram_bwd_pcm'],
         )
         self.claw_rear_motors = wpilib.Spark(RobotMap.claw_cfg['rear_pwm'])
-        self.claw_rear_motors.setInverted(True)
         self.claw_front_motors = wpilib.Talon(RobotMap.claw_cfg['front_pwm'])
-        self.claw_front_motors.setInverted(True)
+        self.claw_rear_motors.setInverted(RobotMap.claw_cfg['rear_invert'])
+        self.claw_front_motors.setInverted(RobotMap.claw_cfg['front_invert'])
 
         self.joystick = wpilib.XboxController(0)
     

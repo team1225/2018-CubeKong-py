@@ -7,6 +7,8 @@ class RobotMap():
     drive_cfg = {
         'left_can': 10,
         'right_can': 11,
+        'left_invert': False,
+        'right_invert': False,
     }
 
     pcm_arm_id = 5
@@ -18,6 +20,8 @@ class RobotMap():
         'ram_pcm_id': pcm_arm_id,
         'ram_fwd_pcm': 2,
         'ram_bwd_pcm': 3,
+        'rear_invert': True,
+        'front_invert': True,
     }
 
     arm_cfg = { # type Lifter
