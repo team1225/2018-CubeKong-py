@@ -1,4 +1,5 @@
 # RobotPy stuff
+python_env/
 pip_cache/
 opkg_cache/
 .installer_config
