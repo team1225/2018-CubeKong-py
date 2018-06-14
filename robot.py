@@ -50,12 +50,12 @@ class MyRobot(MagicRobot):
         self.claw_front_motors.setInverted(RobotMap.claw_cfg['front_invert'])
 
         self.joystick = wpilib.XboxController(0)
-    
+
     #
     # No autonomous routine boilerplate required here, anything in the
     # autonomous folder will automatically get added to a list
     #
-    
+
     def teleopInit(self):
         self.arm.set_lift(RobotMap.arm_cfg['default_up'])
         #super.teleopInit()
@@ -65,12 +65,12 @@ class MyRobot(MagicRobot):
 
         try:
             self.drive.arcadeDrive(
-                    -self.joystick.getY(wpilib.interfaces.GenericHID.Hand.kLeft), # Drive fwd/bwd
-                    self.joystick.getX(wpilib.interfaces.GenericHID.Hand.kRight), # Turn left/right
+                    -0.60 * self.joystick.getY(wpilib.interfaces.GenericHID.Hand.kLeft), # Drive fwd/bwd
+                     0.50 * self.joystick.getX(wpilib.interfaces.GenericHID.Hand.kRight), # Turn left/right
             )
         except:
             self.onException()
-        
+
         try:
             if self.joystick.getYButtonPressed():
                 self.arm.toggle_position()
