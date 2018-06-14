@@ -5,6 +5,9 @@ opkg_cache/
 .installer_config
 .deploy_cfg
 
+# VS Code
+.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -107,3 +110,4 @@ ENV/
 
 # mypy
 .mypy_cache/
+.vscode/settings.json
